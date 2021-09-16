@@ -6,7 +6,7 @@
       </div>
 
       <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+        A dimensão que você está procurando não existe, pelo menos por enquanto.
       </div>
 
       <q-btn
