@@ -50,7 +50,7 @@ export default defineComponent({
     }`;
 
     const search = ref('');
-    const page = ref(32);
+    const page = ref(1);
     const { result, fetchMore } = useQuery<CharactersQueryResult>(CHARACTERS_QUERY, () => ({
       page: page.value,
     }));
