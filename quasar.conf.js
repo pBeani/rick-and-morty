@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /*
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
@@ -31,6 +34,7 @@ module.exports = configure((ctx) => ({
   // https://v2.quasar.dev/quasar-cli/boot-files
   boot: [
     'i18n',
+    'apollo',
   ],
 
   // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -55,7 +59,7 @@ module.exports = configure((ctx) => ({
   // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
   build: {
     vueRouterMode: 'hash', // available values: 'hash', 'history'
-
+    env: require('dotenv').config().parsed,
     // transpile: false,
 
     // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -74,8 +78,18 @@ module.exports = configure((ctx) => ({
 
     // https://v2.quasar.dev/quasar-cli/handling-webpack
     // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-    chainWebpack(/* chain */) {
-      //
+    chainWebpack(chain) {
+      chain.module.rule('vue')
+        .use('vue-loader')
+        .loader('vue-loader')
+        .tap((options) => {
+          options.transpileOptions = {
+            transforms: {
+              dangerousTaggedTemplateString: true,
+            },
+          };
+          return options;
+        });
     },
   },
 
@@ -88,7 +102,9 @@ module.exports = configure((ctx) => ({
 
   // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
   framework: {
-    config: {},
+    config: {
+      dark: true,
+    },
 
     // iconSet: 'material-icons', // Quasar icon set
     // lang: 'en-US', // Quasar language pack
