@@ -30,3 +30,12 @@ export interface CharactersQuery {
 export interface CharactersQueryResult {
   characters: CharactersQuery;
 }
+
+export interface FilterCharacter {
+  name: string;
+}
+
+export interface InfiniteScrollOptions {
+  reset(): void;
+  $el: Element;
+}

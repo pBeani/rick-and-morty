@@ -1,43 +1,54 @@
 <template>
   <q-page>
-    <q-input
-      v-model="search"
-      debounce="500"
-      filled
-      placeholder="Procurar alguém no espaço-tempo"
-    >
-      <template v-slot:append>
-        <q-icon name="search" />
-      </template>
-    </q-input>
-    <q-infinite-scroll @load="onLoad" :offset="250">
+    <q-infinite-scroll @load="onLoad" :offset="250" ref="infiniteScroll">
       <div v-for="character in characters" :key="character.id">
         <q-img :src="character.image" />
         <span>{{ character.name }}</span>
       </div>
-
       <template v-slot:loading>
         <div class="row justify-center q-my-md">
           <q-spinner-dots color="primary" size="40px" />
         </div>
       </template>
     </q-infinite-scroll>
+    <q-page-sticky expand position="top">
+      <q-toolbar class="bg-dark text-white row search-bar">
+        <q-input
+          v-model="search"
+          debounce="2000"
+          filled
+          placeholder="Procurar alguém no espaço-tempo"
+          class="col-12"
+        >
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </q-toolbar>
+    </q-page-sticky>
   </q-page>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import {
+  defineComponent, ref, computed, watch,
+} from 'vue';
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
+// import { scroll } from 'quasar';
 
-import { CallbackFunction, CharactersQueryResult } from '../components/models';
+// const { setVerticalScrollPosition } = scroll;
+
+import {
+  CallbackFunction, CharactersQueryResult, FilterCharacter, InfiniteScrollOptions,
+} from '../components/models';
 
 export default defineComponent({
   name: 'Characters',
   setup() {
     const CHARACTERS_QUERY = gql`
-      query characters($page: Int) {
-        characters(page: $page) {
+      query characters($page: Int, $filter: FilterCharacter) {
+        characters(page: $page, filter: $filter) {
           info {
             next
           },
@@ -51,16 +62,39 @@ export default defineComponent({
 
     const search = ref('');
     const page = ref(1);
-    const { result, fetchMore } = useQuery<CharactersQueryResult>(CHARACTERS_QUERY, () => ({
-      page: page.value,
-    }));
+    const infiniteScroll = ref<InfiniteScrollOptions | null>(null);
+
+    const filter = computed<FilterCharacter>(() => ({ name: search.value }));
+
+    const {
+      result, fetchMore, refetch, loading,
+    } = useQuery<CharactersQueryResult>(
+      CHARACTERS_QUERY, () => ({
+        page: page.value,
+        filter: filter.value,
+      }),
+    );
+
+    watch(filter, (newValue) => {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
+      infiniteScroll.value?.reset();
+      void refetch({
+        page: 1,
+        filter: newValue,
+      });
+    });
 
     const characters = computed(() => result.value?.characters.results ?? []);
 
-    function loadMore() {
-      void fetchMore({
+    async function loadMore() {
+      await fetchMore({
         variables: {
           page: result.value?.characters.info.next,
+          filter: filter.value,
         },
         updateQuery: (previousResult: CharactersQueryResult, { fetchMoreResult }) => {
           if (!fetchMoreResult) {
@@ -83,21 +117,22 @@ export default defineComponent({
         },
       });
     }
-
+    // tentar usar reeef para restar o scroll
     return {
       search,
       result,
+      infiniteScroll,
       loadMore,
       characters,
-      onLoad(index: number, done: CallbackFunction) {
-        setTimeout(() => {
-          if (result.value?.characters.info.next) {
-            loadMore();
-            done();
-          } else {
-            done(true);
-          }
-        }, 2000);
+      async onLoad(index: number, done: CallbackFunction) {
+        if (loading.value) {
+          done();
+          return;
+        }
+        if (result.value?.characters.info.next) {
+          await loadMore();
+        }
+        done();
       },
     };
   },
