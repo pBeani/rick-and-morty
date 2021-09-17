@@ -21,7 +21,7 @@ import {
   toRef,
   Ref,
 } from 'vue';
-import { Todo, Meta } from './models';
+import { Todo, Meta } from './interfaces';
 
 function useClickCount() {
   const clickCount = ref(0);

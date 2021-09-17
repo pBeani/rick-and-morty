@@ -11,21 +11,7 @@
         </div>
       </template>
     </q-infinite-scroll>
-    <q-page-sticky expand position="top">
-      <q-toolbar class="bg-dark text-white row search-bar">
-        <q-input
-          v-model="search"
-          debounce="2000"
-          filled
-          placeholder="Procurar alguém no espaço-tempo"
-          class="col-12"
-        >
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </q-toolbar>
-    </q-page-sticky>
+    <SearchBar v-model="search" />
   </q-page>
 </template>
 
@@ -35,16 +21,17 @@ import {
 } from 'vue';
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
-// import { scroll } from 'quasar';
-
-// const { setVerticalScrollPosition } = scroll;
+import SearchBar from '../components/SearchBar.vue';
 
 import {
   CallbackFunction, CharactersQueryResult, FilterCharacter, InfiniteScrollOptions,
-} from '../components/models';
+} from '../components/interfaces';
 
 export default defineComponent({
   name: 'Characters',
+  components: {
+    SearchBar,
+  },
   setup() {
     const CHARACTERS_QUERY = gql`
       query characters($page: Int, $filter: FilterCharacter) {
