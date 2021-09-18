@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import { Ref, ComputedRef } from 'vue';
 
@@ -21,7 +22,7 @@ export interface CharactersQueryInfo {
 
 export interface CharactersQuery {
   info: CharactersQueryInfo;
-  results: Array<Character>
+  results: Character[]
 }
 
 export interface CharactersQueryResult {
@@ -82,4 +83,20 @@ export interface CharacterProfileQueryResult {
 
 export interface UseFetchCharatecterProfile {
   character: ComputedRef<CharacterProfile>;
+}
+
+export interface Episode {
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: Character[],
+  created: string;
+}
+
+export interface EpisodeQueryResult {
+  episode: Episode;
+}
+
+export interface UseFetchEpisode {
+  episode: ComputedRef<Episode>;
 }

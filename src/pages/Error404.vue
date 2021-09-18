@@ -1,12 +1,12 @@
 <template>
   <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
     <div>
-      <div style="font-size: 30vh">
+      <div>
         404
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        A dimensão que você está procurando não existe, pelo menos por enquanto.
+      <div class="text-h2">
+        The dimension you're looking for doesn't yet exists.
       </div>
 
       <q-btn
@@ -15,7 +15,7 @@
         text-color="blue"
         unelevated
         to="/"
-        label="Go Home"
+        label="Return from whence thou cam'st"
         no-caps
       />
     </div>

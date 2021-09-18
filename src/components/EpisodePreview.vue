@@ -1,5 +1,5 @@
 <template>
-  <q-item>
+  <q-item :to="{ name: 'episode', params: { id: id }}">
     <q-card>
       <strong>{{ episode }}</strong>
       <span>{{ name }}</span>
