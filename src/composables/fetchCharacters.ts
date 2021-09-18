@@ -29,6 +29,7 @@ export const useFetchCharacters = (filter: ComputedRef<FilterCharacter>): UseFet
 
   const characters = computed(() => result.value?.characters.results ?? []);
   const next = computed(() => result.value?.characters.info.next ?? null);
+  const hasNext = computed(() => next.value !== null);
 
   const loadMore = async () => {
     await fetchMore({
@@ -69,6 +70,6 @@ export const useFetchCharacters = (filter: ComputedRef<FilterCharacter>): UseFet
     characters,
     loadMore,
     loading,
-    next,
+    hasNext,
   };
 };

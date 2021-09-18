@@ -7,12 +7,3 @@ export interface Todo {
 export interface Meta {
   totalCount: number;
 }
-
-export interface CallbackFunction {
-  (stop?: boolean): void;
-}
-
-export interface InfiniteScrollOptions {
-  reset(): void;
-  $el: Element;
-}

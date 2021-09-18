@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <q-infinite-scroll @load="onLoad" :offset="250" ref="infiniteScroll">
+    <q-infinite-scroll @load="onLoad" :offset="250" ref="infiniteScrollRef">
       <CharacterPreview
         v-for="character in characters"
         :key="character.id"
@@ -16,15 +16,14 @@
 
 <script lang="ts">
 import {
-  defineComponent, ref, computed, watch,
+  defineComponent, ref, computed,
 } from 'vue';
 import SearchBar from '../components/SearchBar.vue';
 import Loader from '../components/Loader.vue';
 import CharacterPreview from '../components/CharacterPreview.vue';
 import { useFetchCharacters } from '../composables/fetchCharacters';
-import {
-  CallbackFunction, InfiniteScrollOptions,
-} from '../components/interfaces';
+import { useInfiniteScroll } from '../composables/infiniteScroll';
+
 import { FilterCharacter } from '../composables/interfaces';
 
 export default defineComponent({
@@ -37,39 +36,19 @@ export default defineComponent({
   setup() {
     const search = ref('');
     const filter = computed<FilterCharacter>(() => ({ name: search.value }));
+
     const {
-      characters,
-      loadMore,
-      loading,
-      next,
+      characters, loadMore, loading, hasNext,
     } = useFetchCharacters(filter);
 
-    const infiniteScroll = ref<InfiniteScrollOptions | null>(null);
-
-    watch(filter, () => {
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
-      infiniteScroll.value?.reset();
-    });
-
-    const onLoad = async (index: number, done: CallbackFunction) => {
-      if (loading.value) {
-        done();
-        return;
-      }
-      if (next.value) {
-        await loadMore();
-      }
-      done();
-    };
+    const {
+      infiniteScrollRef, onLoad,
+    } = useInfiniteScroll(filter, loading, hasNext, loadMore);
 
     return {
       search,
-      infiniteScroll,
       characters,
+      infiniteScrollRef,
       onLoad,
     };
   },

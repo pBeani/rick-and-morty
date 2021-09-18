@@ -3,7 +3,7 @@
       <q-toolbar class="bg-dark text-white row search-bar">
         <q-input
           v-model="search"
-          debounce="2000"
+          debounce="1000"
           filled
           placeholder="Procurar alguém no espaço-tempo"
           class="col-12"

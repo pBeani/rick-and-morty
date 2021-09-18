@@ -36,5 +36,19 @@ export interface UseFetchCharatecters {
   characters: ComputedRef<Character[]>;
   loadMore: () => Promise<void>;
   loading: Ref<boolean>;
-  next: ComputedRef<number | null>;
+  hasNext: ComputedRef<boolean>;
+}
+
+export interface InfiniteScrollDoneCallback {
+  (stop?: boolean): void;
+}
+
+export interface InfiniteScrollOptions {
+  reset(): void;
+  $el: Element;
+}
+
+export interface UseInfiniteScroll {
+  infiniteScrollRef: Ref<InfiniteScrollOptions | null>;
+  onLoad: (index: number, done: InfiniteScrollDoneCallback) => Promise<void>;
 }
