@@ -5,7 +5,7 @@
           v-model="search"
           debounce="1000"
           filled
-          placeholder="Procurar alguém no espaço-tempo"
+          placeholder="Look into the Cosmos"
           class="col-12"
         >
           <template v-slot:append>
@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useModel } from '../composables/model';
+import { useModel } from '../composables/utils/model';
 
 export default defineComponent({
   name: 'SearchBar',

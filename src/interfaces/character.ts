@@ -1,14 +1,6 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-unused-vars */
 import { Ref, ComputedRef } from 'vue';
-
-export interface Props {
-  modelValue: string;
-}
-
-export interface Emit {
-  (event: string, payload: string | undefined): void;
-}
+import { EpisodePreview } from './episode';
+import { Location } from './location';
 
 export interface Character {
   id: string;
@@ -40,30 +32,6 @@ export interface UseFetchCharatecters {
   hasNext: ComputedRef<boolean>;
 }
 
-export interface InfiniteScrollDoneCallback {
-  (stop?: boolean): void;
-}
-
-export interface InfiniteScrollOptions {
-  reset(): void;
-  $el: Element;
-}
-
-export interface UseInfiniteScroll {
-  infiniteScrollRef: Ref<InfiniteScrollOptions | null>;
-  onLoad: (index: number, done: InfiniteScrollDoneCallback) => Promise<void>;
-}
-
-export interface Location {
-  name: string;
-}
-
-export interface EpisodePreview {
-  id: string;
-  name: string;
-  episode: string;
-}
-
 export interface CharacterProfile {
   name: string;
   status: string;
@@ -83,20 +51,4 @@ export interface CharacterProfileQueryResult {
 
 export interface UseFetchCharatecterProfile {
   character: ComputedRef<CharacterProfile>;
-}
-
-export interface Episode {
-  name: string;
-  air_date: string;
-  episode: string;
-  characters: Character[],
-  created: string;
-}
-
-export interface EpisodeQueryResult {
-  episode: Episode;
-}
-
-export interface UseFetchEpisode {
-  episode: ComputedRef<Episode>;
 }

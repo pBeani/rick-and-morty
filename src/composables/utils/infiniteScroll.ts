@@ -4,7 +4,7 @@ import {
   InfiniteScrollOptions,
   UseInfiniteScroll,
   FilterCharacter,
-} from './interfaces';
+} from '../../interfaces';
 
 export const useInfiniteScroll = (
   filter : Ref<FilterCharacter>,
