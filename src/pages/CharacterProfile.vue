@@ -5,8 +5,8 @@
       <h1>{{ character.name }}</h1>
     </div>
     <q-card>
-      <ProfileItem
-        v-for="item in profile"
+      <RecordItem
+        v-for="item in record"
         :key="item.label"
         v-bind="item"
       />
@@ -25,24 +25,24 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useFetchCharacterProfile } from '../composables/fetchCharacterProfile';
-import { useCharacterProfile } from '../composables/characterProfile';
+import { useCharacterProfileRecord } from '../composables/characterProfileRecord';
 import { useRouteId } from '../composables/routeId';
 import EpisodePreview from '../components/EpisodePreview.vue';
-import ProfileItem from '../components/ProfileItem.vue';
+import RecordItem from '../components/RecordItem.vue';
 
 export default defineComponent({
   name: 'CharacterProfile',
   components: {
     EpisodePreview,
-    ProfileItem,
+    RecordItem,
   },
   setup() {
     const { id } = useRouteId();
     const { character } = useFetchCharacterProfile(id);
-    const { profile } = useCharacterProfile(character);
+    const { record } = useCharacterProfileRecord(character);
 
     return {
-      profile,
+      record,
       character,
     };
   },

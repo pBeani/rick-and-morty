@@ -1,8 +1,8 @@
 import { ComputedRef, computed } from 'vue';
 import { CharacterProfile } from './interfaces';
 
-export const useCharacterProfile = (character: ComputedRef<CharacterProfile>) => {
-  const profile = computed(() => ({
+export const useCharacterProfileRecord = (character: ComputedRef<CharacterProfile>) => {
+  const record = computed(() => ({
     status: {
       label: 'Status',
       value: character.value.status,
@@ -34,6 +34,6 @@ export const useCharacterProfile = (character: ComputedRef<CharacterProfile>) =>
   }));
 
   return {
-    profile,
+    record,
   };
 };
