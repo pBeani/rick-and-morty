@@ -2,9 +2,11 @@
   <q-layout view="hHh lpr fFf">
     <q-header elevated reveal>
       <q-toolbar>
-        <q-avatar>
-          <q-img src="~assets/brand.png" />
-        </q-avatar>
+        <q-item to="/">
+          <q-avatar>
+            <q-img src="~assets/brand.png" />
+          </q-avatar>
+        </q-item>
         <q-toolbar-title>
           Rick and Morty
         </q-toolbar-title>
