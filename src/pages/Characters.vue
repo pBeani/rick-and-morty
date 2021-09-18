@@ -1,14 +1,13 @@
 <template>
   <q-page>
     <q-infinite-scroll @load="onLoad" :offset="250" ref="infiniteScroll">
-      <div v-for="character in characters" :key="character.id">
-        <q-img :src="character.image" />
-        <span>{{ character.name }}</span>
-      </div>
+      <CharacterPreview
+        v-for="character in characters"
+        :key="character.id"
+        v-bind="character"
+      />
       <template v-slot:loading>
-        <div class="row justify-center q-my-md">
-          <q-spinner-dots color="primary" size="40px" />
-        </div>
+        <Loader />
       </template>
     </q-infinite-scroll>
     <SearchBar v-model="search" />
@@ -22,6 +21,8 @@ import {
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 import SearchBar from '../components/SearchBar.vue';
+import Loader from '../components/Loader.vue';
+import CharacterPreview from '../components/CharacterPreview.vue';
 
 import {
   CallbackFunction, CharactersQueryResult, FilterCharacter, InfiniteScrollOptions,
@@ -31,6 +32,8 @@ export default defineComponent({
   name: 'Characters',
   components: {
     SearchBar,
+    Loader,
+    CharacterPreview,
   },
   setup() {
     const CHARACTERS_QUERY = gql`
