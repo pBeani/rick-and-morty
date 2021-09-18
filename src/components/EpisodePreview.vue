@@ -1,7 +1,7 @@
 <template>
-  <q-item :to="{ name: 'characterProfile', params: { id: id }}">
+  <q-item>
     <q-card>
-      <q-img :src="image" />
+      <strong>{{ episode }}</strong>
       <span>{{ name }}</span>
     </q-card>
   </q-item>
@@ -16,11 +16,11 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    image: {
+    name: {
       type: String,
       required: true,
     },
-    name: {
+    episode: {
       type: String,
       required: true,
     },

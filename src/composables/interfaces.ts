@@ -52,3 +52,34 @@ export interface UseInfiniteScroll {
   infiniteScrollRef: Ref<InfiniteScrollOptions | null>;
   onLoad: (index: number, done: InfiniteScrollDoneCallback) => Promise<void>;
 }
+
+export interface Location {
+  name: string;
+}
+
+export interface EpisodePreview {
+  id: string;
+  name: string;
+  episode: string;
+}
+
+export interface CharacterProfile {
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: Location;
+  location: Location;
+  image: string;
+  episode: EpisodePreview[],
+  created: string;
+}
+
+export interface CharacterProfileQueryResult {
+  character: CharacterProfile;
+}
+
+export interface UseFetchCharatecterProfile {
+  character: ComputedRef<CharacterProfile>;
+}
