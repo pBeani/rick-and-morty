@@ -1,7 +1,7 @@
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 import { watch, computed, ComputedRef } from 'vue';
-import { CharactersQueryResult, FilterCharacter, UseFetchCharatecters } from './interfaces';
+import { CharactersQueryResult, FilterCharacter, UseFetchCharatecters } from '../../interfaces';
 
 export const useFetchCharacters = (filter: ComputedRef<FilterCharacter>): UseFetchCharatecters => {
   const CHARACTERS_QUERY = gql`

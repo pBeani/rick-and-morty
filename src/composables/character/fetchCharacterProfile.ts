@@ -1,7 +1,7 @@
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 import { computed, watch, Ref } from 'vue';
-import { CharacterProfile, CharacterProfileQueryResult, UseFetchCharatecterProfile } from './interfaces';
+import { CharacterProfile, CharacterProfileQueryResult, UseFetchCharatecterProfile } from '../../interfaces';
 
 export const useFetchCharacterProfile = (id: Ref<string>): UseFetchCharatecterProfile => {
   const CHARACTER_PROFILE_QUERY = gql`

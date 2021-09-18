@@ -24,9 +24,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useFetchEpisode } from '../composables/fetchEpisode';
-import { useEpisodeRecord } from '../composables/episodeRecord';
-import { useRouteId } from '../composables/routeId';
+import { useFetchEpisode } from '../composables/episode/fetchEpisode';
+import { useEpisodeRecord } from '../composables/episode/episodeRecord';
+import { useRouteId } from '../composables/utils/routeId';
 import CharacterPreview from '../components/CharacterPreview.vue';
 import RecordItem from '../components/RecordItem.vue';
 

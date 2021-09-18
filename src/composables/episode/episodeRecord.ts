@@ -1,5 +1,5 @@
 import { ComputedRef, computed } from 'vue';
-import { Episode } from './interfaces';
+import { Episode } from '../../interfaces';
 
 export const useEpisodeRecord = (episode: ComputedRef<Episode>) => {
   const record = computed(() => ({

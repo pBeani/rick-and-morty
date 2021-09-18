@@ -11,6 +11,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+  name: 'CharacterPreview',
   props: {
     id: {
       type: String,

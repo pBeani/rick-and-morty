@@ -1,6 +1,8 @@
 # Rick and Morty (rick-and-morty)
 
-Informacoes sobre a serie Rick and Morty
+SPA developed with Vue.js, Quasar, TS and Vue Apollo, to consume the Rick and Morty GraphQL API.
+
+Live: https://pbeani.github.io/rick-and-morty-prd
 
 ## Install the dependencies
 ```bash
@@ -21,6 +23,3 @@ yarn run lint
 ```bash
 quasar build
 ```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://v2.quasar.dev/quasar-cli/quasar-conf-js).

@@ -1,7 +1,7 @@
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 import { computed, watch, Ref } from 'vue';
-import { Episode, EpisodeQueryResult, UseFetchEpisode } from './interfaces';
+import { Episode, EpisodeQueryResult, UseFetchEpisode } from '../../interfaces';
 
 export const useFetchEpisode = (id: Ref<string>): UseFetchEpisode => {
   const EPISODE_QUERY = gql`

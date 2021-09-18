@@ -1,6 +1,10 @@
 <template>
   <q-page>
-    <q-infinite-scroll @load="onLoad" :offset="250" ref="infiniteScrollRef">
+    <q-infinite-scroll
+      @load="onLoad"
+      :offset="250"
+      ref="infiniteScrollRef"
+    >
       <CharacterPreview
         v-for="character in characters"
         :key="character.id"
@@ -21,10 +25,10 @@ import {
 import SearchBar from '../components/SearchBar.vue';
 import Loader from '../components/Loader.vue';
 import CharacterPreview from '../components/CharacterPreview.vue';
-import { useFetchCharacters } from '../composables/fetchCharacters';
-import { useInfiniteScroll } from '../composables/infiniteScroll';
+import { useFetchCharacters } from '../composables/character/fetchCharacters';
+import { useInfiniteScroll } from '../composables/utils/infiniteScroll';
 
-import { FilterCharacter } from '../composables/interfaces';
+import { FilterCharacter } from '../interfaces';
 
 export default defineComponent({
   name: 'Characters',

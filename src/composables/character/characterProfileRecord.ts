@@ -1,5 +1,5 @@
 import { ComputedRef, computed } from 'vue';
-import { CharacterProfile } from './interfaces';
+import { CharacterProfile } from '../../interfaces';
 
 export const useCharacterProfileRecord = (character: ComputedRef<CharacterProfile>) => {
   const record = computed(() => ({
