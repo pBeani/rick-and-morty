@@ -51,11 +51,7 @@ export const useFetchCharacterProfile = (id: Ref<string>): UseFetchCharatecterPr
       name: '',
     },
     image: '',
-    episode: {
-      id: '',
-      name: '',
-      episode: '',
-    },
+    episode: [],
     created: '',
   };
 

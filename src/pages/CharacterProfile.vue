@@ -5,56 +5,41 @@
       <h1>{{ character.name }}</h1>
     </div>
     <q-card>
-      <span
+      <ProfileItem
         v-for="item in profile"
         :key="item.label"
-      >
-      {{ item.label }}: <strong>{{ item.value }}</strong>
-      </span>
+        v-bind="item"
+      />
     </q-card>
+    <h2>Appears in</h2>
+    <div>
+      <EpisodePreview
+        v-for="episode in character.episode"
+        :key="episode.id"
+        v-bind="episode"
+      />
+    </div>
   </q-page>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent } from 'vue';
 import { useFetchCharacterProfile } from '../composables/fetchCharacterProfile';
+import { useCharacterProfile } from '../composables/characterProfile';
 import { useRouteId } from '../composables/routeId';
+import EpisodePreview from '../components/EpisodePreview.vue';
+import ProfileItem from '../components/ProfileItem.vue';
 
 export default defineComponent({
   name: 'CharacterProfile',
+  components: {
+    EpisodePreview,
+    ProfileItem,
+  },
   setup() {
     const { id } = useRouteId();
     const { character } = useFetchCharacterProfile(id);
-    const profile = computed(() => ({
-      status: {
-        label: 'Status',
-        value: character.value.status,
-      },
-      species: {
-        label: 'Species',
-        value: character.value.species,
-      },
-      type: {
-        label: 'Type',
-        value: character.value.type,
-      },
-      gender: {
-        label: 'Gender',
-        value: character.value.gender,
-      },
-      origin: {
-        label: 'Origin',
-        value: character.value.origin.name,
-      },
-      location: {
-        label: 'Location',
-        value: character.value.location.name,
-      },
-      created: {
-        label: 'Created',
-        value: character.value.created,
-      },
-    }));
+    const { profile } = useCharacterProfile(character);
 
     return {
       profile,

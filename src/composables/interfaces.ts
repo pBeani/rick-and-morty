@@ -72,7 +72,7 @@ export interface CharacterProfile {
   origin: Location;
   location: Location;
   image: string;
-  episode: EpisodePreview,
+  episode: EpisodePreview[],
   created: string;
 }
 
