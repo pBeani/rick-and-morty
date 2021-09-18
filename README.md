@@ -2,6 +2,8 @@
 
 SPA developed with Vue.js, Quasar, TS and Vue Apollo, to consume the Rick and Morty GraphQL API.
 
+To run the dev server, create your .env file and add the GRAPHQL_URI path, so Apollo can connect to the API.
+
 Live: https://pbeani.github.io/rick-and-morty-prd
 
 ## Install the dependencies
