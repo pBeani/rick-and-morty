@@ -1,6 +1,6 @@
 <template>
-  <q-page-sticky expand position="top">
-      <q-toolbar class="bg-dark text-white row search-bar">
+  <q-page-sticky expand position="top shadow-12">
+      <q-toolbar class="bg-dark text-white row search-bar q-pa-md">
         <q-input
           v-model="search"
           debounce="1000"

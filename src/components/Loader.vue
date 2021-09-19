@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-center q-my-md">
+  <div class="row justify-center q-my-md col-12">
     <q-spinner-dots color="primary" size="40px" />
   </div>
 </template>
