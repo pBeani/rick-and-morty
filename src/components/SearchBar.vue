@@ -5,7 +5,7 @@
           v-model="search"
           debounce="1000"
           filled
-          placeholder="Look into the Cosmos"
+          placeholder="Type here to look into the Cosmos..."
           class="col-12"
         >
           <template v-slot:append>

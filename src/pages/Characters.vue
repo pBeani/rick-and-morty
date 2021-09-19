@@ -14,6 +14,7 @@
         <Loader />
       </template>
     </q-infinite-scroll>
+    <p v-show="showNoResultsText">There are no creatures with this name.</p>
     <SearchBar v-model="search" />
   </q-page>
 </template>
@@ -49,10 +50,15 @@ export default defineComponent({
       infiniteScrollRef, onLoad,
     } = useInfiniteScroll(filter, loading, hasNext, loadMore);
 
+    const showNoResultsText = computed(
+      () => search.value.length && !characters.value.length,
+    );
+
     return {
       search,
       characters,
       infiniteScrollRef,
+      showNoResultsText,
       onLoad,
     };
   },
