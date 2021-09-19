@@ -1,5 +1,6 @@
 import { ComputedRef, computed } from 'vue';
 import { Episode } from '../../interfaces';
+import { useDateFormat } from '../utils/dateFormat';
 
 export const useEpisodeRecord = (episode: ComputedRef<Episode>) => {
   const record = computed(() => ({
@@ -9,7 +10,7 @@ export const useEpisodeRecord = (episode: ComputedRef<Episode>) => {
     },
     created: {
       label: 'Created',
-      value: episode.value.created,
+      value: useDateFormat(episode.value.created),
     },
   }));
 
