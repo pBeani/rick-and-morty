@@ -1,7 +1,9 @@
-// This is just an example,
-// so you can safely delete all default props below
+import { IntlDateTimeFormat } from 'vue-i18n';
 
-export default {
-  failed: 'Action failed',
-  success: 'Action was successful',
+export const datetimeFormat: IntlDateTimeFormat = {
+  short: {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  },
 };

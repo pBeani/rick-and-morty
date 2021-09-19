@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>{{ label }}:</span>
-    <strong>{{ value }}</strong>
+    <strong>{{ value || 'Information not available' }}</strong>
   </div>
 </template>
 

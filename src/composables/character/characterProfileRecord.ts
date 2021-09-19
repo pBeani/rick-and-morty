@@ -1,5 +1,6 @@
 import { ComputedRef, computed } from 'vue';
 import { CharacterProfile } from '../../interfaces';
+import { useDateFormat } from '../utils/dateFormat';
 
 export const useCharacterProfileRecord = (character: ComputedRef<CharacterProfile>) => {
   const record = computed(() => ({
@@ -29,7 +30,7 @@ export const useCharacterProfileRecord = (character: ComputedRef<CharacterProfil
     },
     created: {
       label: 'Created',
-      value: character.value.created,
+      value: useDateFormat(character.value.created),
     },
   }));
 
