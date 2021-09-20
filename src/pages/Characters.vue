@@ -1,5 +1,6 @@
 <template>
   <q-page class="results-container">
+    <SearchBar v-model="search" />
     <q-infinite-scroll
       @load="onLoad"
       :offset="250"
@@ -19,8 +20,7 @@
       v-show="showNoResultsText"
       class="text-center text-h5 q-px-md">
         There are no creatures with this name.
-      </p>
-    <SearchBar v-model="search" />
+    </p>
   </q-page>
 </template>
 

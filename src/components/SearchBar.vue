@@ -1,5 +1,5 @@
 <template>
-  <q-page-sticky expand position="top shadow-12">
+  <q-page-sticky expand position="top shadow-12 search-bar">
       <q-toolbar class="bg-dark text-white row search-bar q-pa-md">
         <q-input
           v-model="search"
@@ -32,3 +32,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.search-bar {
+  z-index: 2;
+}
+</style>
