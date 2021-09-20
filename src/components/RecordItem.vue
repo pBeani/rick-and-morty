@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <span>{{ label }}:</span>
-    <strong>{{ value || 'Information not available' }}</strong>
+  <div class="column q-mb-md record-item col-xs-12 col-sm-6">
+    <span class="text-grey-6">{{ label }}</span>
+    <strong class="text-grey-4">{{ value || 'Information not available' }}</strong>
   </div>
 </template>
 
@@ -22,3 +22,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.record-item {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+</style>

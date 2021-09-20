@@ -1,18 +1,18 @@
 <template>
-  <q-page>
+  <q-page class="q-pb-xl">
     <div>
       <q-img :src="character.image" />
-      <h1>{{ character.name }}</h1>
+      <h1 class="text-h4 q-pl-lg text-grey-4">{{ character.name }}</h1>
     </div>
-    <q-card>
+    <q-card class="q-pa-lg row">
       <RecordItem
         v-for="item in record"
         :key="item.label"
         v-bind="item"
       />
     </q-card>
-    <h2>Appears in</h2>
-    <div>
+    <h2 class="text-h5 q-pl-lg text-grey-4">Appears in</h2>
+    <div class="row">
       <EpisodePreview
         v-for="episode in character.episode"
         :key="episode.id"
