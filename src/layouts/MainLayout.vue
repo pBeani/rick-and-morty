@@ -1,13 +1,13 @@
 <template>
   <q-layout view="hHh lpr fFf">
-    <q-header elevated reveal>
-      <q-toolbar>
+    <q-header elevated>
+      <q-toolbar class="q-pa-md">
         <q-item to="/">
-          <q-avatar>
-            <q-img src="~assets/brand.png" />
+          <q-avatar class="bg-dark q-pa-sm">
+            <q-img src="~assets/brand.png"/>
           </q-avatar>
         </q-item>
-        <q-toolbar-title>
+        <q-toolbar-title class="text-dark text-weight-bold">
           Rick and Morty
         </q-toolbar-title>
       </q-toolbar>

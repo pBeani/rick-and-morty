@@ -1,9 +1,11 @@
 <template>
-  <q-page>
+  <q-page class="results-container">
+    <SearchBar v-model="search" />
     <q-infinite-scroll
       @load="onLoad"
       :offset="250"
       ref="infiniteScrollRef"
+      class="row"
     >
       <CharacterPreview
         v-for="character in characters"
@@ -14,8 +16,11 @@
         <Loader />
       </template>
     </q-infinite-scroll>
-    <p v-show="showNoResultsText">There are no creatures with this name.</p>
-    <SearchBar v-model="search" />
+    <p
+      v-show="showNoResultsText"
+      class="text-center text-h5 q-px-md">
+        There are no creatures with this name.
+    </p>
   </q-page>
 </template>
 
@@ -51,7 +56,7 @@ export default defineComponent({
     } = useInfiniteScroll(filter, loading, hasNext, loadMore);
 
     const showNoResultsText = computed(
-      () => search.value.length && !characters.value.length,
+      () => search.value.length && !characters.value.length && !loading.value,
     );
 
     return {
@@ -64,3 +69,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+$search-height: 88px;
+
+.results-container {
+  padding-top: calc(#{$search-height} + 20px);
+}
+</style>
