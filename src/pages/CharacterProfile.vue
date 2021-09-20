@@ -1,8 +1,12 @@
 <template>
   <q-page class="q-pb-xl">
-    <div>
-      <q-img :src="character.image" />
-      <h1 class="text-h4 q-pl-lg text-grey-4">{{ character.name }}</h1>
+    <div class="column items-center">
+      <q-avatar size="250px" class="q-mt-xl">
+        <q-img :src="character.image" />
+      </q-avatar>
+      <h1 class="text-h4 text-grey-4 q-mb-xl">
+        {{ character.name }}
+      </h1>
     </div>
     <q-card class="q-pa-lg row">
       <RecordItem
@@ -11,7 +15,7 @@
         v-bind="item"
       />
     </q-card>
-    <h2 class="text-h5 q-pl-lg text-grey-4">Appears in</h2>
+    <h2 class="text-h5 q-pl-lg q-mt-xl text-grey-4">Appears in</h2>
     <div class="row">
       <EpisodePreview
         v-for="episode in character.episode"

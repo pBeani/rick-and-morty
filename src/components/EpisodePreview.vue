@@ -3,7 +3,7 @@
     :to="{ name: 'episode', params: { id: id }}"
     class="col-xs-12 col-sm-6 col-md-3 episode-preview"
   >
-    <q-card class="column col-12 q-pa-md">
+    <q-card class="column col-12 q-pa-md episode-preview__card">
       <span class="text-center text-no-wrap text-grey-4">{{ name }}</span>
       <strong class="text-center text-h6 text-grey-4">{{ episode }}</strong>
     </q-card>
@@ -39,11 +39,23 @@ $half-padding: map-get($map: $space-md, $key: 'x') / 2;
   padding-left: $half-padding;
   padding-right: $half-padding;
 
+  &__card {
+    transition: all 0.2s ease-out;
+    border: 1px solid transparent;
+  }
+
   &:nth-child(4n) {
     padding-right: map-get($map: $space-md, $key: 'x');
   }
   &:nth-child(4n - 3) {
     padding-left: map-get($map: $space-md, $key: 'x');
+  }
+
+  &:focus,
+  &:hover {
+    .episode-preview__card {
+      border-color: $primary;
+    }
   }
 }
 

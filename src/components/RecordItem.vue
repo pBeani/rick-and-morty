@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-mb-md record-item col-xs-12 col-sm-6">
+  <div class="column q-mb-md record-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <span class="text-grey-6">{{ label }}</span>
     <strong class="text-grey-4">{{ value || 'Information not available' }}</strong>
   </div>

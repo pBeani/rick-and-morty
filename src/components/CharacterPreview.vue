@@ -33,27 +33,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@mixin card-highlight {
-  position: relative;
-  top: -20px;
-  border-color: $primary;
-}
-
 .character-preview {
   &__card {
     position: relative;
     top: 0;
     transition: all 0.2s ease-out;
     border: 1px solid transparent;
-
-    &:hover {
-      @include card-highlight;
-    }
   }
 
-  &:focus {
+  &:focus,
+  &:hover {
     .character-preview__card {
-      @include card-highlight;
+      position: relative;
+      top: -20px;
+      border-color: $primary;
     }
   }
 }
