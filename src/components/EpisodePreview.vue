@@ -1,7 +1,7 @@
 <template>
   <q-item
     :to="{ name: 'episode', params: { id: id }}"
-    class="col-xs-12 col-sm-6 col-md-3 episode-preview"
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-3 episode-preview"
   >
     <q-card class="column col-12 q-pa-md episode-preview__card">
       <span class="text-center text-no-wrap text-grey-4">{{ name }}</span>
@@ -59,10 +59,36 @@ $half-padding: map-get($map: $space-md, $key: 'x') / 2;
   }
 }
 
+@media only screen and (max-width: $breakpoint-md) {
+  .episode-preview {
+    padding-left: $half-padding;
+    padding-right: $half-padding;
+    &:nth-child(4n) {
+      padding-right: $half-padding;
+    }
+    &:nth-child(4n - 3) {
+      padding-left: $half-padding;
+    }
+    &:nth-child(3n) {
+      padding-right: map-get($map: $space-md, $key: 'x');
+    }
+    &:nth-child(3n - 2) {
+      padding-left: map-get($map: $space-md, $key: 'x');
+    }
+  }
+}
+
 @media only screen and (max-width: $breakpoint-sm) {
   .episode-preview {
     padding-left: map-get($map: $space-md, $key: 'x');
     padding-right: map-get($map: $space-md, $key: 'x');
+
+    &:nth-child(4n) {
+      padding-right: map-get($map: $space-md, $key: 'x');
+    }
+    &:nth-child(4n - 3) {
+      padding-left: map-get($map: $space-md, $key: 'x');
+    }
     &:nth-child(2n) {
       padding-left: $half-padding;
     }
