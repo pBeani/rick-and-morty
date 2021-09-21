@@ -17,6 +17,7 @@ export const useFetchCharacterProfile = (id: Ref<string>): UseFetchCharatecterPr
           },
           location {
             name,
+            id,
           },
           image,
           episode {
@@ -46,9 +47,11 @@ export const useFetchCharacterProfile = (id: Ref<string>): UseFetchCharatecterPr
     gender: '',
     origin: {
       name: '',
+      id: '',
     },
     location: {
       name: '',
+      id: '',
     },
     image: '',
     episode: [],

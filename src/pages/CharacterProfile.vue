@@ -4,9 +4,18 @@
       <q-avatar size="250px" class="q-mt-xl">
         <q-img :src="character.image" />
       </q-avatar>
-      <h1 class="text-h4 text-grey-4 q-mb-xl">
+      <h1 class="text-h4 text-grey-4 q-mb-none">
         {{ character.name }}
       </h1>
+      <q-item
+        v-if="hasLocation"
+        :to="{ name: 'location', params: { id: character.location.id }}"
+        class="row items-center q-mb-xl">
+        <q-icon name="place" size="sm" class="q-mr-sm" color="grey-4"></q-icon>
+        <span class="text-grey-4">
+          {{ character.location.name }}
+        </span>
+      </q-item>
     </div>
     <q-card class="q-pa-lg row">
       <RecordItem
@@ -27,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { useFetchCharacterProfile } from '../composables/character/fetchCharacterProfile';
 import { useCharacterProfileRecord } from '../composables/character/characterProfileRecord';
 import { useRouteId } from '../composables/utils/routeId';
@@ -44,10 +53,11 @@ export default defineComponent({
     const { id } = useRouteId();
     const { character } = useFetchCharacterProfile(id);
     const { record } = useCharacterProfileRecord(character);
-
+    const hasLocation = computed(() => character.value.location?.id?.length > 0);
     return {
       record,
       character,
+      hasLocation,
     };
   },
 });

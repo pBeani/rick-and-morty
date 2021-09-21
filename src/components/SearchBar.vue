@@ -1,5 +1,5 @@
 <template>
-  <q-page-sticky expand position="top shadow-12 search-bar">
+  <q-page-sticky expand position="top" class="shadow-12 search-bar">
       <q-toolbar class="bg-dark text-white row search-bar q-pa-md">
         <q-input
           v-model="search"

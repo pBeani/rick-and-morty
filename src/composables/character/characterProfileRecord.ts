@@ -24,10 +24,6 @@ export const useCharacterProfileRecord = (character: ComputedRef<CharacterProfil
       label: 'Origin',
       value: character.value.origin.name,
     },
-    location: {
-      label: 'Location',
-      value: character.value.location.name,
-    },
     created: {
       label: 'Created',
       value: useDateFormat(character.value.created),
