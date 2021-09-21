@@ -1,6 +1,6 @@
 import { Ref, ComputedRef } from 'vue';
 import { EpisodePreview } from './episode';
-import { Location } from './location';
+import { LocationPreview } from './location';
 
 export interface Character {
   id: string;
@@ -38,8 +38,8 @@ export interface CharacterProfile {
   species: string;
   type: string;
   gender: string;
-  origin: Location;
-  location: Location;
+  origin: LocationPreview;
+  location: LocationPreview;
   image: string;
   episode: EpisodePreview[],
   created: string;
