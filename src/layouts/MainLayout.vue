@@ -1,9 +1,9 @@
 <template>
   <q-layout view="hHh lpr fFf">
     <q-header elevated>
-      <q-toolbar class="q-pa-md">
+      <q-toolbar class="q-pa-sm">
         <q-item to="/">
-          <q-avatar class="bg-dark q-pa-sm">
+          <q-avatar size="50px" class="bg-dark q-pa-sm">
             <q-img src="~assets/brand.png"/>
           </q-avatar>
         </q-item>
