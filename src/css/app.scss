@@ -2,3 +2,8 @@
 .q-infinite-scroll__loading {
   width: 100%;
 }
+
+.text-no-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
