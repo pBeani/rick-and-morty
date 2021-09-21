@@ -38,13 +38,12 @@ export default defineComponent({
     position: relative;
     top: 0;
     transition: all 0.2s ease-out;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
   }
 
   &:focus,
   &:hover {
     .character-preview__card {
-      position: relative;
       top: -20px;
       border-color: $primary;
     }
@@ -61,11 +60,19 @@ export default defineComponent({
       padding: map-get($map: $space-md, $key: 'y') 0;
       border-radius: 0;
       box-shadow: none;
+      position: static;
     }
 
     &__name {
       margin: 0 0 map-get($map: $space-md, $key: 'y') 0;
       padding-left: map-get($map: $space-md, $key: 'x');
+    }
+
+    &:focus,
+    &:hover {
+      .character-preview__card {
+        border-color: transparent;
+      }
     }
   }
 }

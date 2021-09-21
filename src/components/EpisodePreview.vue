@@ -41,7 +41,7 @@ $half-padding: map-get($map: $space-md, $key: 'x') / 2;
 
   &__card {
     transition: all 0.2s ease-out;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
   }
 
   &:nth-child(4n) {
