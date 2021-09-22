@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pb-xl">
-    <div class="column items-center">
-      <h1 class="text-h4 text-grey-4 q-mt-xl q-mb-xl">
+    <div class="column items-center q-px-sm">
+      <h1 class="text-h5 text-grey-4 q-mt-xl q-mb-xl">
         {{ location.name }}
       </h1>
     </div>

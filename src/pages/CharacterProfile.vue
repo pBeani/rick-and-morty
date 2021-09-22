@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pb-xl">
-    <div class="column items-center">
+    <div class="column items-center q-px-sm">
       <q-avatar size="250px" class="q-mt-xl">
         <q-img :src="character.image" />
       </q-avatar>

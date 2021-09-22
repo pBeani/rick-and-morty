@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pb-xl">
-    <div class="column items-center">
+    <div class="column items-center q-px-sm">
       <h1 class="text-h4 text-grey-4 q-mt-xl q-mb-sm">
         {{ episode.name }}
       </h1>
