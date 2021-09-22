@@ -4,7 +4,7 @@
       <q-avatar size="250px" class="q-mt-xl">
         <q-img :src="character.image" />
       </q-avatar>
-      <h1 class="text-h4 text-grey-4 q-mb-none">
+      <h1 class="text-h4 text-grey-4 q-mb-none text-center">
         {{ character.name }}
       </h1>
       <q-item
@@ -12,7 +12,7 @@
         :to="{ name: 'location', params: { id: character.location.id }}"
         class="row items-center q-mb-xl">
         <q-icon name="place" size="sm" class="q-mr-sm" color="grey-4"></q-icon>
-        <span class="text-grey-4">
+        <span class="text-grey-4 text-link">
           {{ character.location.name }}
         </span>
       </q-item>

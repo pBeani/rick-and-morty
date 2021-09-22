@@ -3,7 +3,7 @@
     <SearchBar v-model="search" />
     <q-infinite-scroll
       @load="onLoad"
-      :offset="250"
+      :offset="1000"
       ref="infiniteScrollRef"
       class="row"
     >
