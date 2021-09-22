@@ -7,6 +7,8 @@
           filled
           placeholder="Type here to look into the Cosmos..."
           class="col-12"
+          ref="inputRef"
+          @keypress.enter="blur"
         >
           <template v-slot:append>
             <q-icon name="search" />
@@ -19,6 +21,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useModel } from '../composables/utils/model';
+import { useBlurInput } from '../composables/utils/blurInput';
 
 export default defineComponent({
   name: 'SearchBar',
@@ -26,8 +29,12 @@ export default defineComponent({
     modelValue: String,
   },
   setup(props, { emit }) {
+    const { blur, inputRef } = useBlurInput();
+
     return {
       search: useModel(props, emit),
+      blur,
+      inputRef,
     };
   },
 });
