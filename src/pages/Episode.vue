@@ -1,10 +1,10 @@
 <template>
   <q-page class="q-pb-xl">
     <div class="column items-center q-px-sm">
-      <h1 class="text-h4 text-grey-4 q-mt-xl q-mb-sm">
+      <h1 class="text-h4 text-grey-4 q-mt-xl q-mb-sm text-center">
         {{ episode.name }}
       </h1>
-      <span class="text-h5 text-grey-6 q-mb-xl">
+      <span class="text-h5 text-grey-6 q-mb-xl text-center">
         {{ episode.episode }}
       </span>
     </div>
